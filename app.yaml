@@ -1,0 +1,41 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /prefs
+  script: prefs.application
+  login: required
+
+- url: /confirm
+  script: confirm.application
+  login: required
+
+- url: /schedule
+  script: schedule.application
+  login: required
+
+- url: /create
+  script: create.application
+  login: required
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /css
+  static_dir: css
+
+- url: /images
+  static_dir: images
+  
+- url: .*
+  script: main.application
+
+libraries:
+- name: jinja2
+  version: "2.6"
+- name: markupsafe
+  version: "0.15"
+- name: webapp2
+  version: "2.5.2"

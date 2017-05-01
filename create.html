@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/style1.css" />
+<title>See You There!</title>
+</head>
+<body>
+<div id="container">
+		<div id="mainpic">
+        	<!-- <h1>See You There!</h1>
+            <h2>Plan and Meet.</h2> -->
+        </div>   
+        	
+        <div id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="/">Home</a></li>
+                <!-- <li class="menuitem"><a href="/about">About</a></li>
+                <li class="menuitem"><a href="/create">Create An Event</a></li> -->
+            </ul> 
+        </div>
+        
+		<div id="content">
+		{% if user %}
+		<form action="/create" method="post">
+			&nbsp;&nbsp;
+			<label for="agenda">
+					<b>Meeting Title:</b>
+			</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="agenda" id="agenda" type="text" size="4" value="{{ agenda }}" />
+			<br/>
+			<label for="date">
+			&nbsp;&nbsp;
+					<b>Meeting Date:</b>
+			</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="date" id="data" type="text" size="4" value="{{ date }}" />
+			<br/>
+			<label for="duration">
+			&nbsp;&nbsp;
+					<b>Meeting Duration:</b>
+			</label>
+			&nbsp;
+			<input name="duration" id="duration" type="text" size="4" value="{{ duration }}" />
+			<br/>
+			<label for="time_range.initial">
+			&nbsp;&nbsp;
+					<b>Meeting From:</b>
+			</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="time_range.initial" id="time_range.initial" type="text" size="4" value="{{ inital }}" />
+			<br/>
+			<label for="time_range.final">
+			&nbsp;&nbsp;
+					<b>Meeting To:</b>
+			</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="time_range.final" id="time_range.final" type="text" size="4" value="{{ final }}" />
+			<br/>
+			<label for="mem_prefs.member">
+			&nbsp;&nbsp;
+					<b>Meeting Members:</b>
+			</label>
+			<input name="mem_arg" id="mem_arg" type="text" size="30" value="{{ mem_arg }}" />
+			<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" value="Set" />
+			
+		</form>
+	{% endif %}
+	    
+      </div>
+   </div>
+</body>
+</html>

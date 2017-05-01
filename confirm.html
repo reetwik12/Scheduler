@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/style1.css" />
+	<title>Meetings Created</title>
+</head>
+<body>
+<div id="container">
+		<div id="mainpic">
+        	<!-- <h1>See You There!</h1>
+            <h2>Plan and Meet.</h2> -->
+        </div>   
+        	
+        <div id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="/">Home</a></li>
+                <!-- <li class="menuitem"><a href="/about">About</a></li>
+                <li class="menuitem"><a href="/create">Create An Event</a></li> -->
+            </ul> 
+        </div>
+        
+		<div id="content">
+{% if userprefs %}
+<p>
+		Welcome, {{ userprefs.email }}!
+		You can <a href="{{ logout_url }}">sign out</a>.
+</p>
+
+<p> You have Started the following meetings :
+<br/>
+</p>
+{% for invite in invites %}
+	<div class="row">
+        <blockquote>{{ invite.agenda }}</blockquote>
+        <p> Meet Id : {{ invite.identify }}</p>
+        <p> Duration : {{ invite.duration }}</p>
+        <p> On Date  : {{ invite.date }}</p>
+    </div>
+    		
+{% endfor %}
+		<form action="/confirm" method="post">
+			<label for="identify">
+				Confirm Which Meeting (Enter ID)?:
+			</label>
+			<input name="identify" id="identify" type="text"
+				size="4" value="{{ identify }}" />
+			<input type="submit" value="Set" />
+		</form>	
+{% else %}
+			<p>
+				Welcome!
+				<a href="{{ login_url }}">Sign in or register</a>.
+			</p>
+		
+{% endif %}
+</body>
+</html>	
+	

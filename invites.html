@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/style1.css" />
+<title>See You There!</title>
+</head>
+<body>
+<div id="container">
+		<div id="mainpic">
+        	<!-- <h1>See You There!</h1>
+            <h2>Plan and Meet.</h2> -->
+        </div>   
+        	
+        <div id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="/">Home</a></li>
+           <!-- <li class="menuitem"><a href="/about">About</a></li>
+                <li class="menuitem"><a href="/create">Create An Event</a></li>-->
+            </ul> 
+        </div>
+        
+        <div id="content">
+{% if userprefs %}
+<p>
+		Welcome, {{ userprefs.email }}!
+		You can <a href="{{ logout_url }}">sign out</a>.
+</p>
+
+<p> You have the following Invitations Pending :
+<br/>
+</p>
+{% for invite in invites %}
+	<div class="row">
+        <blockquote>{{ invite.agenda }}</blockquote>
+        <p> Duration : {{ invite.duration }}</p>
+        <p> On Date  : {{ invite.date }}</p>
+    </div>
+{% endfor %}
+		<form action="/prefs" method="post">
+			<label for="available.initial">
+				Preferred time interval (from):
+			</label>
+			<input name="available.initial" id="available.initial" type="text"
+				size="4" value="{{ userprefs.available.initial }}" />
+			<label for="available.final">
+				Preferred time interval (till):
+			</label>
+			<input name="available.final" id="available.final" type="text"
+				size="4" value="{{ userprefs.available.final }}" />
+			<input type="submit" value="Set" />
+		</form>
+		<p>
+			Preferred range is {{ userprefs.available.initial }} - {{ userprefs.available.final }}
+		</p>
+{% else %}
+			<p>
+				Welcome!
+				<a href="{{ login_url }}">Sign in or register</a>.
+			</p>
+		
+{% endif %}
+</body>
+</html>	
+	
